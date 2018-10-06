@@ -4,25 +4,24 @@
     <meta charset="utf-8">  
     <title></title>  
     <style>  
-        body{margin: 0; padding: 0;}  
-        #header{width:100%; height: 90px; background: #b19f9d; }  
-        #nav{margin: 0 auto; width:70%; height: 90px; background: #fcf;}  
-        .content{width: 950px; height: 900px; background: #847369; margin: 0 auto;}  
-        .left{width:30%; height: 900px; background: #decfd4; float: left;}  
-        .right{width: 70%; height: 900px; background: #b3a19d; float: left;}  
-        footer{width:100%; height: 150px; background: #a8817a;}  
+           
     </style>  
 </head>  
    
-<body>  
-    <header id="header">  
-        <nav id="nav">空空</nav>  
-    </header>  
-    <div class="content">  
-        <div class="left"></div>  
-        <div class="right"></div>  
-    </div>  
-    <footer></footer>  
+<body marginheight="0px" marginwidth="0px">  
+    <table width="100%" height="950px" style="background-color:gray">  
+        <tr>  
+            <td colspan="2" width="100%" height="10%" style="background-color: aqua" ><td>  
+        </tr>  
+        <tr>  
+            <td  width="20%" height="80%" style="background-color: blue" ><td>  
+            <td  width="80%" height="80%" style="background-color: blue" ><td>  
+        </tr>  
+        <tr>  
+            <td colspan="2" width="100%" height="10%" style="background-color: black" ><td>  
+        </tr>  
+       
+    </table>  
 </body>  
    
    
