@@ -1,28 +1,32 @@
-<!DOCTYPE html>  
-<html>  
-<head lang="en">  
-    <meta charset="utf-8">  
-    <title></title>  
-    <style>  
-           
-    </style>  
-</head>  
-   
-<body marginheight="0px" marginwidth="0px">  
-    <table width="100%" height="950px" style="background-color:gray">  
-        <tr>  
-            <td colspan="2" width="100%" height="10%" style="background-color: aqua" ><td>  
-        </tr>  
-        <tr>  
-            <td  width="20%" height="80%" style="background-color: blue" ><td>  
-            <td  width="80%" height="80%" style="background-color: blue" ><td>  
-        </tr>  
-        <tr>  
-            <td colspan="2" width="100%" height="10%" style="background-color: black" ><td>  
-        </tr>  
-       
-    </table>  
-</body>  
-   
-   
+<html>
+<head>
+<title>Living Background</title>
+</head>
+<body bgcolor="#FFFFFF" leftmargin="0" marginwidth="0">
+<script language="JavaScript1.2">
+<!--
+function tile(){
+if (!document.all)
+return
+var source=event.srcElement
+if (source.tagName=="IMG")
+document.body.style.backgroundImage="url("+source.src+")"
+}
+function restore(){
+document.body.style.backgroundImage=''
+}
+document.body.ondblclick=restore
+-->
+</script>
+</p>
+<p align="center"><span class="bgimages" onClick="tile();event.cancelBubble=true">
+<img src="backgr1.jpg" height=96 width=96 border=2>
+<img src="backgr2.jpg" height=96 width=96 border=2><br>
+<img src="backgr3.jpg" height=96 width=96 border=2>
+<img src="backgr4.jpg" height=96 width=96 border=2></span></p>
+</td>
+</tr>
+</table>
+</center>
+</body>
 </html>
