@@ -20,10 +20,10 @@ document.body.ondblclick=restore
 </script>
 </p>
 <p align="center"><span class="bgimages" onClick="tile();event.cancelBubble=true">
-<img src="backgr1.jpg" height=96 width=96 border=2>
-<img src="backgr2.jpg" height=96 width=96 border=2><br>
-<img src="backgr3.jpg" height=96 width=96 border=2>
-<img src="backgr4.jpg" height=96 width=96 border=2></span></p>
+<img src="file:///F/tp/backgr1.jpg" height=96 width=96 border=2>
+<img src="file:///F/tp/backgr2.jpg" height=96 width=96 border=2><br>
+<img src="file:///F/tp/backgr3.jpg" height=96 width=96 border=2>
+<img src="file:///F/tp/backgr4.jpg" height=96 width=96 border=2></span></p>
 </td>
 </tr>
 </table>
