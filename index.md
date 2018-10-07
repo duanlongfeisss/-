@@ -16,7 +16,7 @@ document.body.style.backgroundColor=test.options[test.selectedIndex].value;//获
   <option value="green">绿色</option>
   <option value="red">红色</option>
   </select>
-段龙飞 
+段龙飞 12
   </body>
 </html>
   
