@@ -1,72 +1,103 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Document</title>
-    <script type="text/JavaScript" src="js/jquery.js"></script>
+    <title>楼层跳跃式的页面布局</title>
+    <meta charset="utf-8">
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body, html{
+            height: 100%;
+        }
+        ul{
+            list-style: none;
+            height: 100%;
+        }
+        ul li{
+            height: 100%;
+        }
+        ol{
+            list-style: none;
+            position: fixed;
+            top:200px;
+            left: 50px;
+        }
+        ol li{
+            width: 50px;
+            height: 50px;
+            border: 1px solid #000;
+            text-align: center;
+            line-height: 50px;
+            margin-top: -1px;
+            cursor: pointer;
+        }
+    </style>
 </head>
-<style>
-    div section{ 
-        width: 30px; 
-        height: 30px; 
-        margin: 10px; 
-        display: inline-block; 
-    }
-    div section:nth-of-type(1){ 
-        background-color: #177cb0; 
-    }
-    div section:nth-of-type(2){ 
-        background-color: #db5a6b; 
-    }
-    div section:nth-of-type(3){ 
-        background-color: #008000; 
-    }
-    div section:hover{ 
-        cursor:pointer;
-    }
-</style>
 <body>
-    <div>
-        <section onclick="blue()"></section>
-        <section onclick="red()"></section>
-        <section onclick="green()"></section>
-    </div>
-    
-    <center>
-        <h2 style="display:inline-block;">颜色主题jquery变换</h2>
-        <form action="" id="simpleCalc">
-            <span>input：</span><input type="text" required><br><br>
-            <button id="calc">确认</button>
-        </form>
-        <span id="result"></span>
-    </center>
-
-    <script>
-      //设置默认颜色主题
-        $(document).ready(function(){
-            blue();
-        });
-        // 点击单个换色
-        function blue(){
-            change("#177cb0");
+<ul>
+    <li>第一区域</li>
+    <li>第二区域</li>
+    <li>第三区域</li>
+    <li>第四区域</li>
+</ul>
+<ol>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+</ol>
+ 
+<script type="text/javascript" src="myScroll.js"></script>
+<script type="text/javascript">
+    // 点击ol的li，屏幕滑动到对应的ul的li
+    // 利用window.scrollTo()；缓动动画实现
+    var ul = document.getElementsByTagName("ul")[0];
+    var ol = document.getElementsByTagName("ol")[0];
+    var ulLiArr = ul.children;
+    var olLiArr = ol.children;
+    var target = 0;
+    var leader = 0;
+    var timer = null;
+ 
+    // 1. 指定ul和ol中li的背景色，对应li的背景色相同
+    var arrColor = ["green","orange","yellow","red","gold"];
+    // 利用for循环给两个数组中的元素上色
+    for(var i=0; i<arrColor.length; i++){
+        ulLiArr[i].style.backgroundColor = arrColor[i];
+        olLiArr[i].style.backgroundColor = arrColor[i];
+ 
+        // 属性绑定索引值
+        olLiArr[i].index = i;
+        // 循环绑定，为每一个li绑定点击事件
+        olLiArr[i].onclick =function(){
+            // 获取目标位置
+            target = ulLiArr[this.index].offsetTop;
+            clearInterval(timer);
+            // 利用缓动动画原理实现屏幕滑动
+            timer = setInterval(function(){
+                // (1).获取步长
+                var step = (target-leader)/10;
+                // (2).二次处理步长
+                step = step > 0 ? Math.ceil(step) : Math.floor(step);
+                // (3).屏幕滑动
+                leader = leader + step;
+                window.scrollTo(0, leader);
+                // (4).清除定时器
+                if(Math.abs(target-leader) <= Math.abs(step)){
+                    window.scrollTo(0, target);
+                    clearInterval(timer);
+                }
+            }, 25);
         }
-
-        function red(){
-            change("#db5a6b");
+        // 用scroll事件模拟盒子距离最顶端的距离
+        window.onscroll = function(){
+            // 每次屏幕滑动，把屏幕卷去的值赋给leader，模拟获取显示区域距离顶部的距离
+            leader = scroll().top;
         }
-
-        function green(){
-            change("#008000");
-        }
-        //设置需要改变颜色的元素及其样式
-        function change(colo){
-            $("#calc").css("background-color", colo);
-            $("h2, span").css("color", colo);
-            $("input").css("color", colo);
-            $("input[type=text]").focus(function(){$(this).css("outline", "none")});
-            $("input[type=text]").focus(function(){$(this).css("border", "2px solid " + colo)});
-            $("input[type=text]").blur(function(){$(this).css("border", "1px solid gray")});
-        }
-    </script>
+    }
+</script>
+段龙飞
 </body>
-</html>    
+</html>
