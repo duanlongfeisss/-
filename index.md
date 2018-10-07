@@ -1,32 +1,72 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<title>Living Background</title>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script type="text/JavaScript" src="js/jquery.js"></script>
 </head>
-<body bgcolor="#FFFFFF" leftmargin="0" marginwidth="0">
-<script language="JavaScript1.2">
-<!--
-function tile(){
-if (!document.all)
-return
-var source=event.srcElement
-if (source.tagName=="IMG")
-document.body.style.backgroundImage="url("+source.src+")"
-}
-function restore(){
-document.body.style.backgroundImage=''
-}
-document.body.ondblclick=restore
--->
-</script>
-</p>
-<p align="center"><span class="bgimages" onClick="tile();event.cancelBubble=true">
-<img src="F:\tp\backgr1.jpg" height=96 width=96 border=2>
-<img src="F:\tp\backgr2.jpg" height=96 width=96 border=2><br>
-<img src="F:\tp\backgr3.jpg" height=96 width=96 border=2>
-<img src="F:\tp\backgr4.jpg" height=96 width=96 border=2></span></p>
-</td>
-</tr>
-</table>
-</center>
+<style>
+    div section{ 
+        width: 30px; 
+        height: 30px; 
+        margin: 10px; 
+        display: inline-block; 
+    }
+    div section:nth-of-type(1){ 
+        background-color: #177cb0; 
+    }
+    div section:nth-of-type(2){ 
+        background-color: #db5a6b; 
+    }
+    div section:nth-of-type(3){ 
+        background-color: #008000; 
+    }
+    div section:hover{ 
+        cursor:pointer;
+    }
+</style>
+<body>
+    <div>
+        <section onclick="blue()"></section>
+        <section onclick="red()"></section>
+        <section onclick="green()"></section>
+    </div>
+    
+    <center>
+        <h2 style="display:inline-block;">颜色主题jquery变换</h2>
+        <form action="" id="simpleCalc">
+            <span>input：</span><input type="text" required><br><br>
+            <button id="calc">确认</button>
+        </form>
+        <span id="result"></span>
+    </center>
+
+    <script>
+      //设置默认颜色主题
+        $(document).ready(function(){
+            blue();
+        });
+        // 点击单个换色
+        function blue(){
+            change("#177cb0");
+        }
+
+        function red(){
+            change("#db5a6b");
+        }
+
+        function green(){
+            change("#008000");
+        }
+        //设置需要改变颜色的元素及其样式
+        function change(colo){
+            $("#calc").css("background-color", colo);
+            $("h2, span").css("color", colo);
+            $("input").css("color", colo);
+            $("input[type=text]").focus(function(){$(this).css("outline", "none")});
+            $("input[type=text]").focus(function(){$(this).css("border", "2px solid " + colo)});
+            $("input[type=text]").blur(function(){$(this).css("border", "1px solid gray")});
+        }
+    </script>
 </body>
-</html>
+</html>    
